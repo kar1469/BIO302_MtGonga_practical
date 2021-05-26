@@ -84,7 +84,7 @@ cor.test
 
 
 How should the p-value be interpreted?
-  done
+  If P-value is less than 0.05, then null hypothesis rejected.
 ```{r p-value}
 
 ```

@@ -3,7 +3,7 @@
     "path": "~/Downloads/practical 1.Rmd",
     "project_path": null,
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "331112192",
     "contents": "",
     "dirty": false,
     "created": 1622029319735.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "16,19",
-        "scrollLine": "5",
+        "cursorPosition": "86,62",
+        "scrollLine": "72",
         "last_setup_crc32": "F123936265a0c470"
     },
     "folds": "",
-    "lastKnownWriteTime": 1622048686,
+    "lastKnownWriteTime": 1622050571,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1622048686974,
+    "last_content_update": 1622050572002,
     "read_only": false,
     "read_only_alternatives": []
 }
