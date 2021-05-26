@@ -1,0 +1,114 @@
+---
+title: "Bio302 Practical 1 Exploratory Data Analysis"
+author: "Richard J. Telford"
+date: "May 25, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Part 1 Peguins
+
+Load the `palmerpenguins` package and see the `penguins` data.
+```{r loading data}
+library(palmerpenguins)
+penguins.df <- penguins
+View(penguins)
+```
+
+Find the range, mean, median and variance of variable `bill_length_mm`.   
+  Range: 32.1-59.6
+  Mean: 43.92
+  Median: 44.45
+  Variance: 29.81
+```{r parameters}
+range_bill_length <- range(penguins.df$bill_length_mm, na.rm = TRUE)
+mean_bill_length <- mean(penguins.df$bill_length_mm, na.rm = TRUE)
+median_bill_length <- median(penguins.df$bill_length_mm, na.rm = TRUE)
+var_bill_length <- var(penguins.df$bill_length_mm, na.rm = TRUE)
+
+range_bill_length
+mean_bill_length
+median_bill_length
+var_bill_length
+```
+
+What is the standard error of the mean of `bill_length_mm`.
+  Standard error: 0.29
+```{r standard error}
+sd_bill_length <- sd(penguins.df$bill_length_mm, na.rm = TRUE)
+SE_bill_length <- sd_bill_length/sqrt(344)
+SE_bill_length
+```
+
+Plot a histogram of variable `bill_length_mm`
+Mark the position of the mean and median.
+```{r plotting}
+histogram_penguin <- hist(penguins.df$bill_length_mm) +
+  abline(v = mean_bill_length,
+         col = "blue",
+         lwd = "2") +
+  abline(v = median_bill_length,
+         col = "red",
+         lwd = "2")
+histogram_penguin
+```
+
+Plot `bill_length_mm` against `bill_depth_mm`
+```{r plotting}
+plot_penguin <- penguins.df %>% ggplot(aes(x=bill_length_mm, y=bill_depth_mm, color = species)) +
+  geom_point() +
+  labs(x = "Bill length (mm)", y = "Bill depth (mm)")
+plot_penguin
+```
+
+
+Find the covariance and correlation of `bill_length_mm` against `bill_depth_mm`.
+Is the correlation significant? (hint use cor.test())
+  Yes, it is significant. The null hypothesis is rejected
+```{r finding covariance}
+covariance <- cov(penguins.df$bill_length_mm, penguins.df$bill_depth_mm, use = "pairwise.complete.obs")
+covariance
+
+correlation <- cor(penguins.df$bill_length_mm, penguins.df$bill_depth_mm, use = "pairwise.complete.obs")
+correlation
+
+cor.test(x=penguins.df$bill_length_mm, y=penguins.df$bill_depth_mm, use = "pairwise.complete.obs")
+cor.test
+
+```
+
+
+How should the p-value be interpreted?
+  done
+```{r p-value}
+
+```
+
+There are three levels in factor `species` Plot `bill_length_mm` against `bill_depth_mm`, coloured by `species`
+  done
+```{r plotting}
+
+```
+
+Is the correlation between `bill_length_mm` against `bill_depth_mm` significant for any of the groups?
+  
+```{r correlation}
+
+```
+
+This is a sub-group analysis, what are the dangers of this type of analysis?
+```{r analysis}
+
+```
+
+# Part 2 not penguins
+
+Install the `datasauRus` package with `install.packages("datasauRus")` and load it with `library`.
+
+Dataset `datasaurus_dozen` has `x` and `y` variables and a dataset name. 
+For each dataset, calculate the mean and standard deviation of x and y and the correlationn between x and y.
